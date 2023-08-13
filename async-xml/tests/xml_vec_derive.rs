@@ -6,7 +6,7 @@ async fn test_xml_vec_derive() {
     let xml = r#"<report><ids>2 4 6 7</ids></report>"#;
     let de: Report = from_str(xml).await.unwrap();
     let expected = Report {
-        data: vec![2, 4, 6, 7].into(),
+        data: vec![2, 4, 6, 7],
     };
     assert_eq!(de, expected);
 }

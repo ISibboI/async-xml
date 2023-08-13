@@ -26,7 +26,7 @@ impl FromStr for Id {
     type Err = IdFromStrError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        if s.len() == 0 {
+        if s.is_empty() {
             Err(IdFromStrError::Invalid)
         } else {
             Ok(Self(s.to_string()))

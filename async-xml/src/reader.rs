@@ -184,7 +184,7 @@ impl<B: AsyncBufRead + Unpin> PeekingReader<B> {
                         return visitor.build();
                     }
                     Event::Text(text) => {
-                        let text = dec.decode(&text)?;
+                        let text = dec.decode(text)?;
                         let text = quick_xml::escape::unescape(&text)?;
                         tracing::trace!("visiting element text");
                         visitor.visit_text(&text)?;
