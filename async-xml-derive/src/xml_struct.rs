@@ -56,7 +56,7 @@ impl<'a> StructContainer<'a> {
             let mut errs = fields
                 .iter()
                 .filter(|f| f.attrs.source == FieldSource::Value)
-                .map(|f| syn::Error::new_spanned(&f.inner, "multiple fields sourcing from text"))
+                .map(|f| syn::Error::new_spanned(f.inner, "multiple fields sourcing from text"))
                 .collect::<Vec<_>>();
             let mut err = errs.remove(0);
             for e in errs {
@@ -72,7 +72,7 @@ impl<'a> StructContainer<'a> {
             let mut errs = fields
                 .iter()
                 .filter(|f| f.attrs.source == FieldSource::Remains)
-                .map(|f| syn::Error::new_spanned(&f.inner, "multiple fields sourcing from remains"))
+                .map(|f| syn::Error::new_spanned(f.inner, "multiple fields sourcing from remains"))
                 .collect::<Vec<_>>();
             let mut err = errs.remove(0);
             for e in errs {

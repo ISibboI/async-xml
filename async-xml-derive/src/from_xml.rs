@@ -41,7 +41,7 @@ pub fn expand_from_xml(input: &syn::DeriveInput) -> Result<TokenStream, Vec<syn:
     }
 
     match &input.data {
-        syn::Data::Struct(d) => crate::xml_struct::expand_struct(container, &*input, d),
+        syn::Data::Struct(d) => crate::xml_struct::expand_struct(container, input, d),
         _ => Err(vec![syn::Error::new_spanned(
             input,
             "only struct types implemented",

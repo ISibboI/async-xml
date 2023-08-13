@@ -31,13 +31,10 @@ pub fn get_generic_arg(ty: &syn::Type) -> syn::Type {
         if path.path.segments.len() == 1 && path.path.leading_colon.is_none() {
             let segment = &path.path.segments[0];
             if segment.ident == VEC || segment.ident == OPTION {
-                match &segment.arguments {
-                    syn::PathArguments::AngleBracketed(a) => {
-                        if let syn::GenericArgument::Type(t) = &a.args[0] {
-                            return t.clone();
-                        }
+                if let syn::PathArguments::AngleBracketed(a) = &segment.arguments {
+                    if let syn::GenericArgument::Type(t) = &a.args[0] {
+                        return t.clone();
                     }
-                    _ => (),
                 }
             }
         }
